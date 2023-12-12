@@ -12,8 +12,9 @@ def main():
     # Buffering is critical. Raw sockets are very slow
     transport = TTransport.TBufferedTransport(transport)
 
-    # Wrap in a protocol
+    # TBinaryProtocolAccelerated 表示 binary 协议使用 fastbinary 进行序列化
     protocol = TBinaryProtocol.TBinaryProtocolAccelerated(transport)
+    # protocol = TBinaryProtocol.TBinaryProtocol(transport)
 
     # Create a client to use the protocol encoder
     client = Service.Client(protocol)
